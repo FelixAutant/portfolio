@@ -23,6 +23,36 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "gestiondevis",
+    title: "GestionDevis",
+    description: {
+      fr: "Application de devis et de clients pour artisans, en ligne",
+      en: "Quote and client management app for tradespeople, live demo",
+    },
+    longDescription: {
+      fr: "Création de devis avec calcul HT/TVA/TTC, suivi des statuts, export PDF, isolation des données par artisan. 58 tests automatisés, PHPStan niveau max, CI GitHub Actions, déployée sur Render + Neon via Docker.",
+      en: "Quote builder with tax calculations, status tracking, PDF export and per-user data isolation. 58 automated tests, PHPStan max level, GitHub Actions CI, deployed on Render + Neon with Docker.",
+    },
+    technologies: [
+      "Symfony 7.4",
+      "PHP 8.3",
+      "PostgreSQL",
+      "Doctrine",
+      "Twig",
+      "Docker",
+      "PHPUnit",
+      "GitHub Actions",
+    ],
+    category: "web",
+    featured: true,
+    githubUrl: "https://github.com/FelixAutant/GestionDevis-Client",
+    demoUrl: "https://gestiondevis.onrender.com",
+    role: {
+      fr: "Projet personnel - conception et développement",
+      en: "Personal project - design and development",
+    },
+  },
+  {
     id: "jeewago",
     title: "Jeewago",
     description: {
