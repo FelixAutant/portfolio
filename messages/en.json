@@ -83,7 +83,18 @@
     "technologies": "Technologies",
     "role": "My role",
     "filterAll": "All",
-    "noProjects": "No projects found"
+    "noProjects": "No projects found",
+    "eyebrow": "02 — Projects",
+    "headline": "Projects that <accent>run</accent>, not mockups.",
+    "lead": "Web applications delivered end to end: design, tested code, deployment.",
+    "status": "Live",
+    "flagship": "Flagship project · 2026",
+    "tryDemo": "Try the demo",
+    "sourceCode": "Source code",
+    "caseStudy": "Case study",
+    "demoNote": "One click on “Try the demo”, no account needed. First load ~30 s (free hosting).",
+    "imageFrontAlt": "GestionDevis dashboard: signed amount, pending amount, acceptance rate and quotes breakdown by status",
+    "imageBackAlt": "Quote entry form with totals recalculated live"
   },
   "contact": {
     "title": "Contact Me",
@@ -164,5 +175,136 @@
     "back": "Back",
     "next": "Next",
     "previous": "Previous"
+  },
+  "caseStudy": {
+    "metaTitle": "GestionDevis, case study | Félix AUTANT",
+    "metaDescription": "A quote app for tradespeople, designed, tested and deployed end to end: integer arithmetic, VAT per rate, permissions, CI and free hosting.",
+    "back": "All projects",
+    "eyebrow": "Case study · 2026",
+    "title": "GestionDevis",
+    "lead": "A quote app for tradespeople, <accent>designed, tested and deployed</accent> end to end.",
+    "facts": [
+      {
+        "label": "Role",
+        "value": "Design and development"
+      },
+      {
+        "label": "Stack",
+        "value": "Symfony 7.4 · PostgreSQL"
+      },
+      {
+        "label": "Status",
+        "value": "Live",
+        "live": true
+      },
+      {
+        "label": "Code",
+        "value": "Public · MIT license"
+      }
+    ],
+    "ctaDemo": "Try the demo, no account",
+    "ctaCode": "Read the code",
+    "dashboardAlt": "Dashboard: signed amount, pending amount, acceptance rate and quotes breakdown",
+    "need": {
+      "label": "01 — The need",
+      "title": "A wrong quote is lost margin.",
+      "body": "Many tradespeople still price jobs in spreadsheets: VAT at several rates computed by hand, numbers kept in memory, no tracking of what was sent or accepted."
+    },
+    "answer": {
+      "label": "02 — The answer",
+      "title": "Correct maths, clear tracking.",
+      "items": [
+        "Net total, VAT by rate and gross total recalculated as you type",
+        "Automatic DV-YYYY-NNNN numbering per user",
+        "Tracking draft → sent → accepted or declined",
+        "Quote as a PDF, ready to send"
+      ]
+    },
+    "images": {
+      "label": "03 — In pictures",
+      "form": {
+        "alt": "Entering a two-line quote, totals shown live",
+        "lead": "Entering a quote.",
+        "caption": "Each line has its own VAT rate; totals follow your typing."
+      },
+      "detail": {
+        "alt": "Quote detail with VAT broken down by rate and PDF buttons",
+        "lead": "Detail and PDF.",
+        "caption": "VAT broken down by rate, preview or download in one click."
+      }
+    },
+    "internals": {
+      "label": "04 — Under the hood",
+      "title": "The choices that make the difference.",
+      "cards": [
+        {
+          "title": "No decimal numbers",
+          "body": "Prices in cents, quantities in hundredths, VAT in basis points. Every calculation uses integers: no rounding drift.",
+          "code": "18.5 m² × €65.00 → 1850 × 6500 / 100\n= 120,250 ¢  (€1,202.50)"
+        },
+        {
+          "title": "VAT computed per rate",
+          "body": "VAT is computed once per rate on the cumulated net base, like on a real invoice, rather than line by line.",
+          "code": "20 %  base €1,202.50  → €240.50\n10 %  base   €890.00  →  €89.00"
+        },
+        {
+          "title": "Everyone gets their own data",
+          "body": "A Symfony Voter checks the owner on every access: a user can never see or edit another user's clients or quotes."
+        },
+        {
+          "title": "A demo that stays clean",
+          "body": "One-click sign-in, and demo data reset on every start, with a safeguard that refuses to touch a database containing real accounts."
+        }
+      ]
+    },
+    "quality": {
+      "label": "05 — Quality and delivery",
+      "stats": [
+        {
+          "value": "61",
+          "label": "unit and functional tests",
+          "tone": "primary"
+        },
+        {
+          "value": "max",
+          "label": "PHPStan level, no ignored error",
+          "tone": "secondary"
+        },
+        {
+          "value": "CI",
+          "label": "style, analysis and tests on every push",
+          "tone": "accent"
+        },
+        {
+          "value": "€0",
+          "label": "hosting cost, free tiers",
+          "tone": "plain"
+        }
+      ],
+      "flow": [
+        {
+          "name": "GitHub",
+          "detail": "push to main"
+        },
+        {
+          "name": "GitHub Actions",
+          "detail": "PHP-CS-Fixer · PHPStan · PHPUnit"
+        },
+        {
+          "name": "Render",
+          "detail": "Docker image · Frankfurt"
+        },
+        {
+          "name": "Neon",
+          "detail": "PostgreSQL 18 · Frankfurt"
+        }
+      ]
+    },
+    "closing": {
+      "title": "The easiest way is to try it.",
+      "body": "Next steps under consideration: quote → invoice conversion, e-mail sending, REST API.",
+      "ctaDemo": "Open the demo",
+      "ctaProjects": "See the other projects"
+    }
   }
 }

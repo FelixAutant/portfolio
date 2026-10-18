@@ -83,7 +83,18 @@
     "technologies": "Technologies",
     "role": "Mon rôle",
     "filterAll": "Tous",
-    "noProjects": "Aucun projet trouvé"
+    "noProjects": "Aucun projet trouvé",
+    "eyebrow": "02 — Projets",
+    "headline": "Des projets qui <accent>tournent</accent>, pas des maquettes.",
+    "lead": "Applications web livrées de bout en bout : conception, code testé, déploiement.",
+    "status": "En ligne",
+    "flagship": "Projet phare · 2026",
+    "tryDemo": "Essayer la démo",
+    "sourceCode": "Code source",
+    "caseStudy": "Étude de cas",
+    "demoNote": "Un clic sur « Essayer la démo », sans compte. Premier chargement ~30 s (hébergement gratuit).",
+    "imageFrontAlt": "Tableau de bord de GestionDevis : montant signé, montant en attente, taux d'acceptation et répartition des devis par statut",
+    "imageBackAlt": "Formulaire de saisie d'un devis avec totaux recalculés en direct"
   },
   "contact": {
     "title": "Me Contacter",
@@ -164,5 +175,136 @@
     "back": "Retour",
     "next": "Suivant",
     "previous": "Précédent"
+  },
+  "caseStudy": {
+    "metaTitle": "GestionDevis, étude de cas | Félix AUTANT",
+    "metaDescription": "Application de devis pour artisans, conçue, testée et déployée de bout en bout : calculs en entiers, TVA par taux, permissions, CI et déploiement gratuit.",
+    "back": "Tous les projets",
+    "eyebrow": "Étude de cas · 2026",
+    "title": "GestionDevis",
+    "lead": "Une application de devis pour artisans, <accent>conçue, testée et déployée</accent> de bout en bout.",
+    "facts": [
+      {
+        "label": "Rôle",
+        "value": "Conception et développement"
+      },
+      {
+        "label": "Stack",
+        "value": "Symfony 7.4 · PostgreSQL"
+      },
+      {
+        "label": "Statut",
+        "value": "En ligne",
+        "live": true
+      },
+      {
+        "label": "Code",
+        "value": "Public · licence MIT"
+      }
+    ],
+    "ctaDemo": "Essayer la démo, sans compte",
+    "ctaCode": "Lire le code",
+    "dashboardAlt": "Tableau de bord : montant signé, montant en attente, taux d'acceptation et répartition des devis",
+    "need": {
+      "label": "01 — Le besoin",
+      "title": "Un devis faux, c'est une marge perdue.",
+      "body": "Beaucoup d'artisans chiffrent encore sur tableur : TVA à plusieurs taux calculée à la main, numéros tenus de mémoire, aucun suivi de ce qui a été envoyé ou accepté."
+    },
+    "answer": {
+      "label": "02 — La réponse",
+      "title": "Des calculs justes, un suivi clair.",
+      "items": [
+        "Totaux HT, TVA ventilée et TTC recalculés pendant la saisie",
+        "Numérotation automatique DV-AAAA-NNNN par artisan",
+        "Suivi brouillon → envoyé → accepté ou refusé",
+        "Devis en PDF, prêt à envoyer"
+      ]
+    },
+    "images": {
+      "label": "03 — En images",
+      "form": {
+        "alt": "Saisie d'un devis à deux lignes, totaux affichés en direct",
+        "lead": "Saisie d'un devis.",
+        "caption": "Chaque ligne a son taux de TVA ; les totaux suivent la frappe."
+      },
+      "detail": {
+        "alt": "Détail d'un devis avec TVA ventilée par taux et boutons PDF",
+        "lead": "Détail et PDF.",
+        "caption": "TVA ventilée par taux, aperçu ou téléchargement en un clic."
+      }
+    },
+    "internals": {
+      "label": "04 — Sous le capot",
+      "title": "Les choix qui font la différence.",
+      "cards": [
+        {
+          "title": "Zéro nombre à virgule",
+          "body": "Prix en centimes, quantités en centièmes, TVA en points de base. Tous les calculs se font en entiers : aucune dérive d'arrondi.",
+          "code": "18,5 m² × 65,00 € → 1850 × 6500 / 100\n= 120 250 ¢  (1 202,50 €)"
+        },
+        {
+          "title": "TVA calculée par taux",
+          "body": "La TVA est calculée une fois par taux sur la base HT cumulée, comme sur une vraie facture, et non ligne par ligne.",
+          "code": "20 %  base 1 202,50 €  → 240,50 €\n10 %  base   890,00 €  →  89,00 €"
+        },
+        {
+          "title": "Chacun ses données",
+          "body": "Un Voter Symfony vérifie le propriétaire à chaque accès : un artisan ne voit ni ne modifie jamais les clients ou devis d'un autre."
+        },
+        {
+          "title": "Une démo qui reste propre",
+          "body": "Connexion en un clic, et données de démo remises à zéro à chaque démarrage, avec un garde-fou qui refuse de toucher une base contenant de vrais comptes."
+        }
+      ]
+    },
+    "quality": {
+      "label": "05 — Qualité et livraison",
+      "stats": [
+        {
+          "value": "61",
+          "label": "tests unitaires et fonctionnels",
+          "tone": "primary"
+        },
+        {
+          "value": "max",
+          "label": "niveau PHPStan, sans erreur ignorée",
+          "tone": "secondary"
+        },
+        {
+          "value": "CI",
+          "label": "style, analyse et tests à chaque push",
+          "tone": "accent"
+        },
+        {
+          "value": "0 €",
+          "label": "d'hébergement, offres gratuites",
+          "tone": "plain"
+        }
+      ],
+      "flow": [
+        {
+          "name": "GitHub",
+          "detail": "push sur main"
+        },
+        {
+          "name": "GitHub Actions",
+          "detail": "PHP-CS-Fixer · PHPStan · PHPUnit"
+        },
+        {
+          "name": "Render",
+          "detail": "image Docker · Francfort"
+        },
+        {
+          "name": "Neon",
+          "detail": "PostgreSQL 18 · Francfort"
+        }
+      ]
+    },
+    "closing": {
+      "title": "Le plus simple, c'est de l'essayer.",
+      "body": "Prochaines étapes envisagées : conversion devis → facture, envoi par e-mail, API REST.",
+      "ctaDemo": "Ouvrir la démo",
+      "ctaProjects": "Voir les autres projets"
+    }
   }
 }

@@ -12,18 +12,21 @@ export interface Project {
   technologies: string[];
   category: "web" | "mobile" | "desktop" | "devops";
   image?: string;
-  imageAlt?: {
+  imageBack?: string;
+  stats?: {
+    value: string;
+    label: {
+      fr: string;
+      en: string;
+    };
+    tone: "primary" | "secondary" | "accent";
+  }[];
+  caseStudyPath?: string;
+  kicker?: {
     fr: string;
     en: string;
   };
-  highlights?: {
-    fr: string[];
-    en: string[];
-  };
-  demoNote?: {
-    fr: string;
-    en: string;
-  };
+  stackLine?: string;
   githubUrl?: string;
   demoUrl?: string;
   featured: boolean;
@@ -38,45 +41,38 @@ export const projects: Project[] = [
     id: "gestiondevis",
     title: "GestionDevis",
     description: {
-      fr: "Application de devis et de clients pour artisans, en ligne",
-      en: "Quote and client management app for tradespeople, live demo",
-    },
-    longDescription: {
-      fr: "Les artisans créent leurs devis en quelques lignes : totaux HT, TVA ventilée par taux et TTC recalculés en direct, numérotation DV-AAAA-NNNN, suivi brouillon → envoyé → accepté / refusé et export PDF. Chaque artisan ne voit que ses propres données. Refonte visuelle récente : tableau de bord chiffré, interface responsive et mode sombre.",
-      en: "Tradespeople build quotes in a few lines: net total, VAT broken down by rate and gross total update live, DV-YYYY-NNNN numbering, draft → sent → accepted / declined tracking and PDF export. Each user only sees their own data. Recent visual redesign: figures dashboard, responsive interface and dark mode.",
+      fr: "Devis et clients pour artisans : TVA ventilée par taux, suivi des statuts, export PDF.",
+      en: "Quotes and clients for tradespeople: VAT broken down by rate, status tracking, PDF export.",
     },
     image: "/projects/gestiondevis/dashboard.webp",
-    imageAlt: {
-      fr: "Tableau de bord de GestionDevis : montant signé, montant en attente, taux d'acceptation et répartition des devis par statut",
-      en: "GestionDevis dashboard: signed amount, pending amount, acceptance rate and quotes breakdown by status",
-    },
-    highlights: {
-      fr: [
-        "Montants en entiers (centimes) : aucun float, aucune dérive d'arrondi",
-        "Permissions par artisan via les voters Symfony",
-        "Plus de 50 tests automatisés, PHPStan niveau max sans baseline",
-        "CI GitHub Actions et déploiement Docker sur Render + Neon",
-      ],
-      en: [
-        "Amounts stored as integers (cents): no floats, no rounding drift",
-        "Per-user permissions through Symfony voters",
-        "50+ automated tests, PHPStan max level with no baseline",
-        "GitHub Actions CI and Docker deployment on Render + Neon",
-      ],
-    },
-    demoNote: {
-      fr: "Bouton « Essayer la démo sans compte » sur la page de connexion. Hébergement gratuit : le premier chargement peut prendre 30 à 60 s. Les données de démo sont remises à zéro à chaque démarrage du serveur.",
-      en: "Use the “Try the demo without an account” button on the login page. Free hosting: the first load can take 30 to 60 s. Demo data is reset every time the server starts.",
-    },
+    imageBack: "/projects/gestiondevis/quote-form.webp",
+    stats: [
+      {
+        value: "61",
+        label: { fr: "tests automatisés", en: "automated tests" },
+        tone: "primary",
+      },
+      {
+        value: "max",
+        label: { fr: "niveau PHPStan", en: "PHPStan level" },
+        tone: "secondary",
+      },
+      {
+        value: "0 €",
+        label: { fr: "d'hébergement", en: "hosting cost" },
+        tone: "accent",
+      },
+    ],
+    caseStudyPath: "/projects/gestiondevis",
     technologies: [
       "Symfony 7.4",
       "PHP 8.3",
       "PostgreSQL",
+      "Docker",
+      "GitHub Actions",
       "Doctrine",
       "Twig",
-      "Docker",
       "PHPUnit",
-      "GitHub Actions",
     ],
     category: "web",
     featured: true,
@@ -91,9 +87,11 @@ export const projects: Project[] = [
     id: "jeewago",
     title: "Jeewago",
     description: {
-      fr: "Site d'analyse HBJO (Horlogerie, Bijouterie, Joaillerie, Orfèvrerie)",
-      en: "HBJO analysis website (Watchmaking, Jewelry, Goldsmithing)",
+      fr: "Site d'analyse HBJO : horlogerie, bijouterie, joaillerie, orfèvrerie.",
+      en: "HBJO analysis website: watchmaking, jewelry, goldsmithing.",
     },
+    kicker: { fr: "Stage · Web", en: "Internship · Web" },
+    stackLine: "PHP · SQL · JavaScript",
     longDescription: {
       fr: "Développement d'une plateforme web complète pour l'analyse et la gestion de données HBJO. Implémentation d'interfaces utilisateur intuitives et d'un back-end robuste.",
       en: "Development of a complete web platform for HBJO data analysis and management. Implementation of intuitive user interfaces and a robust backend.",
@@ -110,9 +108,11 @@ export const projects: Project[] = [
     id: "timeharmony",
     title: "TimeHarmony",
     description: {
-      fr: "Application web de gestion d'agendas et de planification",
-      en: "Web application for calendar management and scheduling",
+      fr: "Gestion d'agendas et planification, partage de calendriers et notifications.",
+      en: "Calendar management and scheduling, calendar sharing and notifications.",
     },
+    kicker: { fr: "Développeur principal · Web", en: "Lead developer · Web" },
+    stackLine: "PHP · Twig · MySQL",
     longDescription: {
       fr: "Application complète de gestion d'agendas avec interface responsive. Fonctionnalités de création d'événements, partage de calendriers et notifications.",
       en: "Complete calendar management application with responsive interface. Features event creation, calendar sharing, and notifications.",
@@ -127,11 +127,13 @@ export const projects: Project[] = [
   },
   {
     id: "android-recipes",
-    title: "Application Android - Recettes",
+    title: "Recettes Android",
     description: {
-      fr: "Application mobile de gestion de plats et recettes",
-      en: "Mobile application for meal and recipe management",
+      fr: "Gestion de recettes avec recherche, favoris et liste de courses.",
+      en: "Recipe management with search, favorites and a shopping list.",
     },
+    kicker: { fr: "Mobile", en: "Mobile" },
+    stackLine: "Java · SQL · Android Studio",
     longDescription: {
       fr: "Application Android native permettant de gérer une collection de recettes avec fonctionnalités de recherche, favoris et liste de courses.",
       en: "Native Android application for managing a recipe collection with search, favorites, and shopping list features.",
