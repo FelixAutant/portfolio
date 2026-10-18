@@ -74,6 +74,25 @@ const config: Config = {
           muted: "#64748B", // Slate-500
           "muted-light": "#D1D1D1",
         },
+        // Surfaces sombres de la section Projets et de l'étude de cas
+        ink: {
+          DEFAULT: "#141210",
+          card: "#1E1A17",
+          panel: "#1A1714",
+          raised: "#241F1B",
+          chip: "#2A2420",
+          code: "#0F0D0C",
+          line: "#3A322C",
+          "line-soft": "#2E2823",
+          "line-strong": "#5A4E44",
+        },
+        sand: {
+          DEFAULT: "#F5E6D3",
+          soft: "#E9DCCB",
+          muted: "#C9BBA9",
+          dim: "#A89A8A",
+          faint: "#8E8174",
+        },
         // Dégradés prédéfinis
         gradient: {
           start: "#FF5C93", // Rose
@@ -92,6 +111,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
         display: ["var(--font-poppins)", "Poppins", "system-ui", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
       },
       fontSize: {
         "hero": ["clamp(2.5rem, 8vw, 5rem)", { lineHeight: "1.1", fontWeight: "700" }],

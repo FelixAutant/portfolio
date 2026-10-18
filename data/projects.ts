@@ -12,6 +12,21 @@ export interface Project {
   technologies: string[];
   category: "web" | "mobile" | "desktop" | "devops";
   image?: string;
+  imageBack?: string;
+  stats?: {
+    value: string;
+    label: {
+      fr: string;
+      en: string;
+    };
+    tone: "primary" | "secondary" | "accent";
+  }[];
+  caseStudyPath?: string;
+  kicker?: {
+    fr: string;
+    en: string;
+  };
+  stackLine?: string;
   githubUrl?: string;
   demoUrl?: string;
   featured: boolean;
@@ -26,22 +41,38 @@ export const projects: Project[] = [
     id: "gestiondevis",
     title: "GestionDevis",
     description: {
-      fr: "Application de devis et de clients pour artisans, en ligne",
-      en: "Quote and client management app for tradespeople, live demo",
+      fr: "Devis et clients pour artisans : TVA ventilée par taux, suivi des statuts, export PDF.",
+      en: "Quotes and clients for tradespeople: VAT broken down by rate, status tracking, PDF export.",
     },
-    longDescription: {
-      fr: "Création de devis avec calcul HT/TVA/TTC, suivi des statuts, export PDF, isolation des données par artisan. 58 tests automatisés, PHPStan niveau max, CI GitHub Actions, déployée sur Render + Neon via Docker.",
-      en: "Quote builder with tax calculations, status tracking, PDF export and per-user data isolation. 58 automated tests, PHPStan max level, GitHub Actions CI, deployed on Render + Neon with Docker.",
-    },
+    image: "/projects/gestiondevis/dashboard.webp",
+    imageBack: "/projects/gestiondevis/quote-form.webp",
+    stats: [
+      {
+        value: "61",
+        label: { fr: "tests automatisés", en: "automated tests" },
+        tone: "primary",
+      },
+      {
+        value: "max",
+        label: { fr: "niveau PHPStan", en: "PHPStan level" },
+        tone: "secondary",
+      },
+      {
+        value: "0 €",
+        label: { fr: "d'hébergement", en: "hosting cost" },
+        tone: "accent",
+      },
+    ],
+    caseStudyPath: "/projects/gestiondevis",
     technologies: [
       "Symfony 7.4",
       "PHP 8.3",
       "PostgreSQL",
+      "Docker",
+      "GitHub Actions",
       "Doctrine",
       "Twig",
-      "Docker",
       "PHPUnit",
-      "GitHub Actions",
     ],
     category: "web",
     featured: true,
@@ -56,9 +87,11 @@ export const projects: Project[] = [
     id: "jeewago",
     title: "Jeewago",
     description: {
-      fr: "Site d'analyse HBJO (Horlogerie, Bijouterie, Joaillerie, Orfèvrerie)",
-      en: "HBJO analysis website (Watchmaking, Jewelry, Goldsmithing)",
+      fr: "Site d'analyse HBJO : horlogerie, bijouterie, joaillerie, orfèvrerie.",
+      en: "HBJO analysis website: watchmaking, jewelry, goldsmithing.",
     },
+    kicker: { fr: "Stage · Web", en: "Internship · Web" },
+    stackLine: "PHP · SQL · JavaScript",
     longDescription: {
       fr: "Développement d'une plateforme web complète pour l'analyse et la gestion de données HBJO. Implémentation d'interfaces utilisateur intuitives et d'un back-end robuste.",
       en: "Development of a complete web platform for HBJO data analysis and management. Implementation of intuitive user interfaces and a robust backend.",
@@ -75,9 +108,11 @@ export const projects: Project[] = [
     id: "timeharmony",
     title: "TimeHarmony",
     description: {
-      fr: "Application web de gestion d'agendas et de planification",
-      en: "Web application for calendar management and scheduling",
+      fr: "Gestion d'agendas et planification, partage de calendriers et notifications.",
+      en: "Calendar management and scheduling, calendar sharing and notifications.",
     },
+    kicker: { fr: "Développeur principal · Web", en: "Lead developer · Web" },
+    stackLine: "PHP · Twig · MySQL",
     longDescription: {
       fr: "Application complète de gestion d'agendas avec interface responsive. Fonctionnalités de création d'événements, partage de calendriers et notifications.",
       en: "Complete calendar management application with responsive interface. Features event creation, calendar sharing, and notifications.",
@@ -92,11 +127,13 @@ export const projects: Project[] = [
   },
   {
     id: "android-recipes",
-    title: "Application Android - Recettes",
+    title: "Recettes Android",
     description: {
-      fr: "Application mobile de gestion de plats et recettes",
-      en: "Mobile application for meal and recipe management",
+      fr: "Gestion de recettes avec recherche, favoris et liste de courses.",
+      en: "Recipe management with search, favorites and a shopping list.",
     },
+    kicker: { fr: "Mobile", en: "Mobile" },
+    stackLine: "Java · SQL · Android Studio",
     longDescription: {
       fr: "Application Android native permettant de gérer une collection de recettes avec fonctionnalités de recherche, favoris et liste de courses.",
       en: "Native Android application for managing a recipe collection with search, favorites, and shopping list features.",
