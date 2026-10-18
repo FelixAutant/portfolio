@@ -4,7 +4,8 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
-import { Github, ExternalLink, Code2 } from "lucide-react";
+import Image from "next/image";
+import { Github, ExternalLink, Code2, Check } from "lucide-react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { SectionWrapper } from "./SectionWrapper";
 import { TextReveal } from "@/components/animations/TextReveal";
@@ -185,6 +186,21 @@ function FeaturedProjectCard({
       ? project.role.en
       : project.role.fr
     : null;
+  const imageAlt = project.imageAlt
+    ? locale === "en"
+      ? project.imageAlt.en
+      : project.imageAlt.fr
+    : project.title;
+  const highlights = project.highlights
+    ? locale === "en"
+      ? project.highlights.en
+      : project.highlights.fr
+    : [];
+  const demoNote = project.demoNote
+    ? locale === "en"
+      ? project.demoNote.en
+      : project.demoNote.fr
+    : null;
 
   const featuredCardRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
@@ -215,9 +231,19 @@ function FeaturedProjectCard({
       <div className="grid md:grid-cols-2 gap-0">
         {/* Image side */}
         <div className="relative h-48 md:h-auto bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 flex items-center justify-center overflow-hidden">
-          <div ref={iconRef}>
-            <Code2 className="w-20 h-20 text-primary/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500" />
-          </div>
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={imageAlt}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
+            />
+          ) : (
+            <div ref={iconRef}>
+              <Code2 className="w-20 h-20 text-primary/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500" />
+            </div>
+          )}
           <div className="absolute top-4 left-4">
             <Badge variant="gradient" className="text-xs badge-shimmer">
               Featured
@@ -247,6 +273,21 @@ function FeaturedProjectCard({
             <p className="text-sm text-text-muted dark:text-text-muted-light mb-4">
               {longDesc}
             </p>
+          )}
+
+          {/* Highlights */}
+          {highlights.length > 0 && (
+            <ul className="space-y-1.5 mb-5">
+              {highlights.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2 text-sm text-text-dark dark:text-text-light"
+                >
+                  <Check className="w-4 h-4 mt-0.5 shrink-0 text-primary" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           )}
 
           {/* Technologies */}
@@ -285,6 +326,11 @@ function FeaturedProjectCard({
               </Button>
             )}
           </div>
+          {demoNote && (
+            <p className="mt-3 text-xs text-text-muted dark:text-text-muted-light">
+              {demoNote}
+            </p>
+          )}
         </div>
       </div>
     </div>

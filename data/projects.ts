@@ -12,6 +12,18 @@ export interface Project {
   technologies: string[];
   category: "web" | "mobile" | "desktop" | "devops";
   image?: string;
+  imageAlt?: {
+    fr: string;
+    en: string;
+  };
+  highlights?: {
+    fr: string[];
+    en: string[];
+  };
+  demoNote?: {
+    fr: string;
+    en: string;
+  };
   githubUrl?: string;
   demoUrl?: string;
   featured: boolean;
@@ -30,8 +42,31 @@ export const projects: Project[] = [
       en: "Quote and client management app for tradespeople, live demo",
     },
     longDescription: {
-      fr: "Création de devis avec calcul HT/TVA/TTC, suivi des statuts, export PDF, isolation des données par artisan. 58 tests automatisés, PHPStan niveau max, CI GitHub Actions, déployée sur Render + Neon via Docker.",
-      en: "Quote builder with tax calculations, status tracking, PDF export and per-user data isolation. 58 automated tests, PHPStan max level, GitHub Actions CI, deployed on Render + Neon with Docker.",
+      fr: "Les artisans créent leurs devis en quelques lignes : totaux HT, TVA ventilée par taux et TTC recalculés en direct, numérotation DV-AAAA-NNNN, suivi brouillon → envoyé → accepté / refusé et export PDF. Chaque artisan ne voit que ses propres données. Refonte visuelle récente : tableau de bord chiffré, interface responsive et mode sombre.",
+      en: "Tradespeople build quotes in a few lines: net total, VAT broken down by rate and gross total update live, DV-YYYY-NNNN numbering, draft → sent → accepted / declined tracking and PDF export. Each user only sees their own data. Recent visual redesign: figures dashboard, responsive interface and dark mode.",
+    },
+    image: "/projects/gestiondevis/dashboard.webp",
+    imageAlt: {
+      fr: "Tableau de bord de GestionDevis : montant signé, montant en attente, taux d'acceptation et répartition des devis par statut",
+      en: "GestionDevis dashboard: signed amount, pending amount, acceptance rate and quotes breakdown by status",
+    },
+    highlights: {
+      fr: [
+        "Montants en entiers (centimes) : aucun float, aucune dérive d'arrondi",
+        "Permissions par artisan via les voters Symfony",
+        "Plus de 50 tests automatisés, PHPStan niveau max sans baseline",
+        "CI GitHub Actions et déploiement Docker sur Render + Neon",
+      ],
+      en: [
+        "Amounts stored as integers (cents): no floats, no rounding drift",
+        "Per-user permissions through Symfony voters",
+        "50+ automated tests, PHPStan max level with no baseline",
+        "GitHub Actions CI and Docker deployment on Render + Neon",
+      ],
+    },
+    demoNote: {
+      fr: "Bouton « Essayer la démo sans compte » sur la page de connexion. Hébergement gratuit : le premier chargement peut prendre 30 à 60 s. Les données de démo sont remises à zéro à chaque démarrage du serveur.",
+      en: "Use the “Try the demo without an account” button on the login page. Free hosting: the first load can take 30 to 60 s. Demo data is reset every time the server starts.",
     },
     technologies: [
       "Symfony 7.4",
